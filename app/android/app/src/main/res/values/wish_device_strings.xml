@@ -1,0 +1,5 @@
+<resources><string name="wish_reminder_channel">Work reminders</string><string name="wish_widget_open">Open work</string>
+<string name="wish_import_no_work">Create a work before importing.</string>
+<string name="wish_import_choose">Save to a work</string>
+<string name="wish_import_failed">Import failed. Use text or one file under 2 MB.</string>
+</resources>

@@ -1,0 +1,4 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:id="@+id/wish_widget_root" android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:padding="20dp" android:background="#131C2E">
+    <TextView android:id="@+id/wish_widget_title" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="DSH AnyApp" android:textSize="14sp" android:textColor="#A3ADBD" android:maxLines="1" android:ellipsize="end" />
+    <TextView android:id="@+id/wish_widget_value" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:textSize="20sp" android:textColor="#F4F1EA" android:maxLines="3" android:ellipsize="end" />
+</LinearLayout>

@@ -1,0 +1,11 @@
+{
+  "@@locale": "zh",
+  "anyWorkMoreManagement": "更多管理",
+  "anyWorkMoreManagementHelp": "版本、记录与任务对话",
+  "anyPermissionsAndActions": "权限与动作",
+  "anyPermissionsAndActionsHelp": "管理手机授权、悬浮入口和桌面快捷方式。用到时再开启，随时可以关闭。",
+  "anyActionsCenterHelp": "把这个作品的常用操作放在手边，或添加到桌面。",
+  "anyMorePhoneCapabilities": "更多手机能力",
+  "anyMorePhoneCapabilitiesHelp": "日历、位置、通知读取与后台运行",
+  "anyPhoneAccessHelp": "控制应用、收取提醒或使用相机，都可以在这里分别管理。"
+}

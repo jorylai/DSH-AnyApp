@@ -1,0 +1,34 @@
+{
+  "name": "@local/local-preset-calorie",
+  "version": "1.0.1",
+  "private": true,
+  "type": "module",
+  "description": "热量教练：拍照识别食物热量，本地记录饮食、体重、步数与睡眠，读取佳明等健康应用最近 7 天的运动/HRV/睡眠档案，给出饮食和训练建议。",
+  "exports": {
+    ".": "./index.js",
+    "./client": "./client.js",
+    "./locale/*.json": "./locale/*.json",
+    "./icon": "./icon.svg"
+  },
+  "files": [
+    "index.js",
+    "client.js",
+    "cordis.patch.yml",
+    "locale/*.json",
+    "icon.svg"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "immediately": true,
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-renderer",
+        "@deepseek-ai/dsh-client-ui-sidebar",
+        "@deepseek-ai/dsh-client-ui-layout"
+      ]
+    }
+  }
+}

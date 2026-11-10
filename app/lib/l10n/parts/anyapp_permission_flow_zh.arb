@@ -1,0 +1,22 @@
+{
+  "@@locale": "zh",
+  "anySetupInstalledApp": "这次请选择「{name}」",
+  "anySetupOverlayListHelp": "会优先打开 AnyApp 自己的权限页。若系统仍显示应用列表，选择上方的应用名称；不要去选择“允许悬浮在哪些应用”的使用范围。",
+  "anySetupOverlayAfterGrant": "在本应用的权限页找到「显示悬浮窗」，选择「始终允许」；其他手机可能叫「允许显示在其他应用上层」。返回这里，开启上方「悬浮入口」就能看到球。若刚才从开关发起授权，返回后会继续显示。",
+  "anySetupOverlayDeferred": "悬浮窗还没有开启。你可以先继续使用作品，需要时再来设置。",
+  "anySetupOverlayGrantedHelp": "系统已允许显示。开启上方的「悬浮入口」，才会在屏幕边缘出现。",
+  "anySetupOverlayGrantAction": "去允许悬浮窗",
+  "anySetupOverlayXiaomi": "小米 / Redmi / POCO：打开本应用的权限页，在「设置相关」里找到「显示悬浮窗」，点进去选择「始终允许」。页面顶部应是本次安装的 AnyApp 名称；「后台弹出界面」是另一项权限。",
+  "anySetupOverlayHuawei": "华为 / 荣耀：在「设置 → 应用和服务 / 应用 → 权限管理」中查找「悬浮窗」，选择本应用并允许。后台弹窗是另一项设置，现在无需一起开启。",
+  "anySetupOverlayColor": "OPPO / 一加 / realme：在系统设置中搜索「悬浮窗」，或从本应用的「应用信息 → 权限 / 特殊应用权限」查找。若进入应用列表，选择本次安装的应用名称。",
+  "anySetupOverlayVivo": "vivo / iQOO：常见入口是「设置 → 应用与权限 → 权限管理 → 悬浮窗」。也可在设置或 i 管家中搜索「悬浮窗」，找到本应用。",
+  "anySetupOverlaySamsung": "三星：在「设置 → 应用 → 更多菜单 → 特殊访问权限」中查找「显示在其他应用上层 / 出现在顶部」，再选择本应用。也可以直接搜索该名称。",
+  "@anySetupInstalledApp": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "anySetupOverlaySwitchHelp": "开启后，屏幕边缘会出现 AnyApp 悬浮球；关闭即可隐藏。首次开启会先帮你申请本应用的悬浮窗权限。"
+}

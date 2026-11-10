@@ -1,0 +1,3 @@
+- insert:
+    - id: local-preset-radar
+      name: '@local/local-preset-radar'

@@ -1,0 +1,3 @@
+- insert:
+    - id: local-preset-pomodoro
+      name: '@local/local-preset-pomodoro'

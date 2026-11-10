@@ -1,0 +1,206 @@
+{
+  "kit": 7,
+  "bridge": 2,
+  "brand": "DSH AnyApp",
+  "components": [
+    "scaffold",
+    "header",
+    "content",
+    "composer",
+    "tabs",
+    "card",
+    "button",
+    "settings",
+    "source",
+    "table",
+    "taskControl",
+    "backgroundTasks"
+  ],
+  "durationsMs": {
+    "press": 90,
+    "release": 220,
+    "feedback": 160,
+    "content": 260,
+    "page": 340
+  },
+  "background": {
+    "minIntervalMinutes": 15,
+    "maxRunMinutes": 20
+  },
+  "compatibility": "Existing work IDs, profiles, data, sessions and user overrides are retained.",
+  "icons": {
+    "glyphs": [
+      "spark",
+      "timer",
+      "camera",
+      "assistant",
+      "trip",
+      "cart",
+      "note",
+      "heart",
+      "calendar",
+      "plane",
+      "book",
+      "music",
+      "weather",
+      "fitness",
+      "translate",
+      "code",
+      "receipt",
+      "globe",
+      "mail",
+      "chart",
+      "wallet",
+      "home",
+      "work",
+      "search",
+      "lightning",
+      "leaf",
+      "coffee",
+      "restaurant",
+      "pet",
+      "gift",
+      "photo",
+      "video",
+      "headphones",
+      "mic",
+      "language",
+      "map",
+      "compass",
+      "train",
+      "bike",
+      "car",
+      "walk",
+      "bed",
+      "health",
+      "brain",
+      "moon",
+      "cloud",
+      "rain",
+      "water",
+      "flower",
+      "tree",
+      "rocket",
+      "robot",
+      "game",
+      "paint",
+      "palette",
+      "pencil",
+      "folder",
+      "document",
+      "scan",
+      "qr",
+      "lock",
+      "shield",
+      "key",
+      "link",
+      "bookmark",
+      "star",
+      "bell",
+      "clock",
+      "target",
+      "check",
+      "list",
+      "calculator",
+      "savings",
+      "diamond",
+      "sunrise",
+      "boat",
+      "school"
+    ],
+    "palettes": [
+      "indigo",
+      "violet",
+      "mint",
+      "amber",
+      "rose"
+    ],
+    "variants": [
+      0,
+      1,
+      2
+    ],
+    "size": 256,
+    "styleVersion": 2,
+    "kinds": [
+      "glyph",
+      "emoji",
+      "vector"
+    ],
+    "emoji": {
+      "version": "17.0",
+      "fullyQualifiedCount": 3944,
+      "annotations": "CLDR 48 zh/en",
+      "categories": 9,
+      "artwork": "device emoji font",
+      "fontSupport": "depends on device; preview required"
+    },
+    "vector": {
+      "canvas": 64,
+      "minExtent": 2,
+      "maxExtent": 62,
+      "maxShapes": 16,
+      "maxTotalPathPoints": 96,
+      "types": [
+        "circle",
+        "roundRect",
+        "path"
+      ],
+      "colorRoles": [
+        "foreground",
+        "accent",
+        "white",
+        "background",
+        "none"
+      ],
+      "strokeWidth": [
+        0.5,
+        6
+      ]
+    },
+    "aiDesign": "Current logged-in text model authors bounded vector JSON; local renderer produces PNG; preview before apply."
+  },
+  "style": "radar-ink-glow",
+  "defaultGuide": "STYLE-RADAR.md",
+  "radii": {
+    "hero": 28,
+    "card": 23,
+    "button": 17,
+    "input": 15
+  },
+  "spacing": [
+    4,
+    8,
+    12,
+    16,
+    20,
+    24
+  ],
+  "typography": {
+    "eyebrow": 10,
+    "title": 28,
+    "section": 19,
+    "body": 15,
+    "caption": 12
+  },
+  "required": [
+    "business-title",
+    "clear-primary-action",
+    "settings-save-state",
+    "keyboard-viewport",
+    "host-menu-inset",
+    "truthful-task-state",
+    "empty-error-loading"
+  ],
+  "experimental": [
+    "background-agent-scheduler"
+  ],
+  "motion": {
+    "enter": "cubic-bezier(.16,1,.3,1)",
+    "settle": "cubic-bezier(.22,.8,.25,1)",
+    "maxTravelDp": 10,
+    "pressScale": 0.985,
+    "reducedMotion": "instant",
+    "actionDelayMs": 0
+  }
+}

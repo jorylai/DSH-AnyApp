@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "title": "食物相机",
+  "load": "food.today",
+  "components": [
+    {
+      "type": "text",
+      "text": "拍一张，记下这一餐。识别结果是估算，可以修改。"
+    },
+    {
+      "type": "camera",
+      "bind": "photo"
+    },
+    {
+      "type": "button",
+      "label": "识别热量",
+      "action": "food.recognize"
+    },
+    {
+      "type": "input",
+      "label": "食物名称",
+      "bind": "name"
+    },
+    {
+      "type": "input",
+      "label": "热量（kcal）",
+      "bind": "kcal",
+      "keyboard": "number"
+    },
+    {
+      "type": "list",
+      "bind": "items",
+      "item": {
+        "title": "name",
+        "trailing": "kcal"
+      }
+    },
+    {
+      "type": "text",
+      "bind": "notes"
+    },
+    {
+      "type": "button",
+      "label": "保存到今日饮食",
+      "action": "food.save"
+    },
+    {
+      "type": "metric",
+      "label": "今日合计",
+      "bind": "todayKcal",
+      "unit": "kcal"
+    },
+    {
+      "type": "list",
+      "bind": "todayFood",
+      "item": {
+        "title": "name",
+        "subtitle": "stapleText",
+        "trailing": "totalKcal"
+      }
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "kind": "calorie",
+  "version": "1.1.0",
+  "sourceId": "local-preset-calorie",
+  "baselineClientHashes": [
+    "6548f7c8795f455e264de3461a9253b3e570d36e6c7e8d83b68b5d6d27ecde6b"
+  ],
+  "targetClientHash": "04b94c3d6704a7a7fb11604bd146b303739c172f73d76840cb1721da2d059627",
+  "bundleHash": "6207f3f4615f3fccc405463d3de2c1a043a7b7f7880f5268f26a8758e4979568"
+}

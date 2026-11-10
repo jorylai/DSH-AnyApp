@@ -1,0 +1,3 @@
+- insert:
+    - id: dsh-wish-food-data
+      name: "@local/dsh-wish-food-data"

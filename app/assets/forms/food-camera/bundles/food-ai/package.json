@@ -1,0 +1,11 @@
+{
+  "name": "@local/dsh-wish-food-ai",
+  "version": "0.7.0",
+  "type": "module",
+  "main": "index.mjs",
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  }
+}

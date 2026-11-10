@@ -1,0 +1,5 @@
+<resources><string name="wish_reminder_channel">作品提醒</string><string name="wish_widget_open">打开作品</string>
+<string name="wish_import_no_work">请先创建一个作品，再导入内容。</string>
+<string name="wish_import_choose">保存到哪个作品</string>
+<string name="wish_import_failed">导入失败。请分享文字或单个小于 2 MB 的文件。</string>
+</resources>

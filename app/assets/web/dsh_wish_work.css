@@ -1,0 +1,26 @@
+/* Applied only while viewing one work. Creator keeps the official DSH layout. */
+:root[data-dsh-wish-work] [data-slot="root"] > [class*="_frame"] {
+  grid-template-columns: minmax(0, 1fr) !important;
+  padding-top: 0 !important;
+}
+:root[data-dsh-wish-work] [data-slot="root"] > [class*="_frame"] > [class*="_sidebarCol"],
+:root[data-dsh-wish-work] [data-slot="root"] > [class*="_frame"] > [class*="_rightbarCol"],
+:root[data-dsh-wish-work] [data-slot="root"] > [class*="_frame"] > [class*="_handle"],
+:root[data-dsh-wish-work] [data-slot="shell.bottom"] { display: none !important; }
+:root[data-dsh-wish-work] [data-slot="root"] > [class*="_frame"] > [class*="_centerCol"] {
+  grid-column: 1 !important; grid-row: 1 !important; border: none !important;
+}
+/* A missing/disabled plugin must never reveal a different conversation as the work. */
+:root[data-dsh-wish-work] [data-slot="conversation"] { visibility: hidden !important; }
+
+/* Native Wish creation header owns all navigation; no duplicate DSH toolbar. */
+:root[data-dsh-wish-creator] [data-slot="conversation.header"],
+:root[data-dsh-wish-creator] [data-slot="conversation.session.header"],
+:root[data-dsh-wish-creator] [data-slot="conversation.session.header.corner"] { display:none !important; }
+:root[data-dsh-wish-shell] [data-slot="root"] > [class*="_frame"] { grid-template-columns:minmax(0,1fr) !important; }
+:root[data-dsh-wish-shell] [data-slot="root"] > [class*="_frame"] > [class*="_sidebarCol"],
+:root[data-dsh-wish-shell] [data-slot="root"] > [class*="_frame"] > [class*="_handle"] { display:none !important; }
+:root[data-dsh-wish-shell] [data-slot="root"] > [class*="_frame"] > [class*="_centerCol"] { grid-column:1 !important; }
+:root[data-dsh-wish-creator] { --dsw-alias-bg-base:#0c1424; --dsw-specific-sidebar-fill:#131c2e; --dsw-alias-text-primary:#f4f1ea; }
+
+:root[data-dsh-wish-creator] [data-slot="root"] > [class*="_frame"] > [class*="_rightbarCol"] {display:none !important;}

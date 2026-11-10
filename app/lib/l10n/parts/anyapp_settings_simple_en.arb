@@ -1,0 +1,11 @@
+{
+  "@@locale": "en",
+  "anyWorkMoreManagement": "More options",
+  "anyWorkMoreManagementHelp": "Versions, records and task conversation",
+  "anyPermissionsAndActions": "Permissions & actions",
+  "anyPermissionsAndActionsHelp": "Manage phone access, the floating entry and home screen shortcuts. Enable what you need and turn it off any time.",
+  "anyActionsCenterHelp": "Keep this app’s frequent actions within reach, or add them to your home screen.",
+  "anyMorePhoneCapabilities": "More phone capabilities",
+  "anyMorePhoneCapabilitiesHelp": "Calendar, location, notification access and background activity",
+  "anyPhoneAccessHelp": "Manage app control, reminders, camera access and more in one place."
+}

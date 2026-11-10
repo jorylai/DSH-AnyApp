@@ -1,0 +1,22 @@
+{
+  "@@locale": "en",
+  "anySetupInstalledApp": "Choose “{name}” for this installation",
+  "anySetupOverlayListHelp": "We first open AnyApp’s own permission page. If the system shows an app list instead, choose the installation named above. Do not configure which other apps may use floating windows.",
+  "anySetupOverlayAfterGrant": "On this app’s permission page, allow “Floating windows” or “Display over other apps”. Return here and turn on Floating entry to show the ball. If you requested permission from the switch, it will continue showing the entry when you return.",
+  "anySetupOverlayDeferred": "Floating windows are still off. You can keep using your app and set this up later.",
+  "anySetupOverlayGrantedHelp": "System access is allowed. Turn on Floating entry above to show it at the edge of the screen.",
+  "anySetupOverlayGrantAction": "Allow floating windows",
+  "anySetupOverlayXiaomi": "Xiaomi / Redmi / POCO: on this app’s permission page, find Display floating windows under Settings and choose Always allow. The page title should name this AnyApp installation. Background pop-ups are a separate permission.",
+  "anySetupOverlayHuawei": "Huawei / Honor: look for Floating windows under Settings → Apps & services / Apps → Permissions, choose this app and allow it. Background pop-ups are a separate setting and are not needed for this step.",
+  "anySetupOverlayColor": "OPPO / OnePlus / realme: search Settings for Floating windows, or check this app’s App info → Permissions / Special app access. If a list opens, choose the name of this installation.",
+  "anySetupOverlayVivo": "vivo / iQOO: a common path is Settings → Apps & permissions → Permission management → Floating windows. You can also search Settings or i Manager for Floating windows and find this app.",
+  "anySetupOverlaySamsung": "Samsung: look under Settings → Apps → More options → Special access for Appear on top / Display over other apps, then choose this app. You can also search Settings for that name.",
+  "@anySetupInstalledApp": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "anySetupOverlaySwitchHelp": "Show an AnyApp ball at the screen edge; turn this off to hide it. The first enable requests this app’s floating-window permission if needed."
+}

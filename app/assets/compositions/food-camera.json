@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "id": "local-food-camera",
+  "name": "食物相机",
+  "subtitle": "拍照识别，或手动记下这一餐",
+  "icon": "camera",
+  "version": "0.7.0",
+  "runtime": {
+    "profile": "app-local-food-camera",
+    "bundles": [
+      {
+        "name": "@local/dsh-wish-food-data",
+        "path": "bundles/food-data"
+      },
+      {
+        "name": "@local/dsh-wish-food-ai",
+        "path": "bundles/food-ai"
+      }
+    ]
+  },
+  "surface": {
+    "kind": "hybrid",
+    "native": {
+      "renderer": "m3",
+      "entry": "food-camera",
+      "view": "native/food-camera.view.json"
+    },
+    "dsh": {
+      "actions": [
+        "food.today",
+        "food.save",
+        "food.delete",
+        "food.recognize",
+        "food.recognized"
+      ]
+    }
+  },
+  "data": {
+    "namespace": "local-food-camera",
+    "collections": [
+      "todayFood"
+    ]
+  },
+  "capabilities": [
+    "camera",
+    "ai"
+  ],
+  "permissions": [
+    "camera",
+    "ai"
+  ],
+  "statusMetric": "todayKcal",
+  "statusUnit": "kcal",
+  "statusDaily": true
+}
