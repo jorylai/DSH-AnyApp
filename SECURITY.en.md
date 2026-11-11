@@ -6,7 +6,7 @@ Keep exploit details, credentials, private keys, real user data and complete dia
 
 ## Report privately
 
-Open this repository's [Security Advisories](https://github.com/ccch1mneyyy/dsh-go/security/advisories) page:
+Open AnyApp's [Security Advisories](https://github.com/jorylai/DSH-AnyApp/security/advisories) page:
 
 - If **Report a vulnerability** is available, use it to submit a private report.
 - If it is unavailable, open an issue asking only how to contact the maintainer privately, then wait for a private contact route. Do not describe the vulnerability, attach reproduction data or identify an affected deployment in that public issue.
@@ -29,7 +29,7 @@ Reports may cover the app, Dart communication packages, bundled bridge, runtime 
 
 Reproduce issues only with your own devices, accounts and data, or in environments where you have authorization. Do not access other people's content, perform destructive actions or disrupt live services to validate a report. This policy does not authorize testing third-party services.
 
-The local engine can execute tools and load plugins. Running the engine on the phone does not mean model requests stay on the device. See the [user guide](docs/guide/README.md) for permissions, model data and usage statistics.
+The local engine can execute tools and load plugins. Running the engine on the phone does not mean model requests stay on the device. Read the in-app permission guidance and privacy settings, and enable phone capabilities as needed.
 
 ## Handling and disclosure
 

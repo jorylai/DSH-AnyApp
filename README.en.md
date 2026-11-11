@@ -2,6 +2,8 @@
 
 Create personal Android apps with natural language and real DeepSeek Harness Creator. New installs include Price Radar 1.25.0 and Pomodoro. Existing works and records are not replaced by starter updates.
 
+[Download 0.10.11 APK](https://github.com/jorylai/DSH-AnyApp/releases/download/v0.10.11/DSH-AnyApp-0.10.11-arm64.apk) · [Release notes and downloads](https://github.com/jorylai/DSH-AnyApp/releases/latest) · [中文](README.md)
+
 ## Thanks
 
 Special thanks to [DSH Go](https://github.com/ccch1mneyyy/dsh-go), its author and contributors. Their product showed us a practical path for running DeepSeek Harness on Android and connecting accessibility, overlays and other Android capabilities. Their exploration and open-source work were an important starting point for DSH AnyApp. This is an independently maintained community derivative, not an official DeepSeek or DSH Go distribution or endorsement.
@@ -17,3 +19,7 @@ Signing keys, local configuration and accounts are excluded. Use your own signin
 ## Current limits
 
 This APK targets API 28 for its local Linux execution architecture and is not a Google Play submission package. Final full device regression is pending. The independent in-app update feed has not been enabled. Automated tests and package verification do not establish successful live cross-app price comparison.
+
+## Updates
+
+Future versions are published in this repository's Releases. Official APKs retain their package identity and signing key, allowing in-place upgrades that preserve app data. Test builds use a separate identity. This version has no active in-app update feed; check the [release page](https://github.com/jorylai/DSH-AnyApp/releases/latest) for updates. Do not replace the app with packages from an unknown source or a different signer.

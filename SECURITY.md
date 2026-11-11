@@ -6,7 +6,7 @@
 
 ## 如何私密报告
 
-打开仓库的 [Security Advisories](https://github.com/ccch1mneyyy/dsh-go/security/advisories) 页面：
+打开 AnyApp 仓库的 [Security Advisories](https://github.com/jorylai/DSH-AnyApp/security/advisories) 页面：
 
 - 如果有 **Report a vulnerability**，使用该入口发送私密报告。
 - 如果没有该入口，请先开一个只询问“如何私密联系维护者”的 Issue，等待私密联系方式。不要在该 Issue 中描述漏洞细节、附上复现数据或公布受影响的部署地址。
@@ -29,7 +29,7 @@
 
 只在自己的设备、账号、数据和获授权的环境中复现。不要为验证问题访问他人的内容、执行破坏性操作或影响线上服务。本政策不授予测试第三方服务的权限。
 
-本机引擎可以执行工具和加载插件；“在手机上运行”不代表模型请求不离开设备。权限、模型数据和使用统计说明见[用户指南](docs/guide/README.md)。
+本机引擎可以执行工具和加载插件；“在手机上运行”不代表模型请求不离开设备。请阅读应用内权限引导与隐私设置，按需开启手机能力。
 
 ## 处理与披露
 

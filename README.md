@@ -2,6 +2,8 @@
 
 一句话，创造适合自己的 Android 小应用。
 
+[下载 0.10.11 APK](https://github.com/jorylai/DSH-AnyApp/releases/download/v0.10.11/DSH-AnyApp-0.10.11-arm64.apk) · [发布说明与全部下载](https://github.com/jorylai/DSH-AnyApp/releases/latest) · [English](README.en.md)
+
 基于真实 DeepSeek Harness Creator，可继续修改、导入和分享作品。首次安装自动准备比价雷达 1.25.0 与番茄钟。手机读屏、悬浮动作、提醒等能力由用户按需要开启。
 
 本项目是社区衍生项目，非 DeepSeek 官方产品。上游代码来源：ccch1mneyyy/dsh-go；遵循 AGPL-3.0 及各第三方组件许可，见 LICENSE、THIRD_PARTY_NOTICES.md、ASSETS.md。
@@ -31,4 +33,8 @@ DSH AnyApp 在这一基础上继续探索作品创作、分享与日常使用体
 
 安装包采用 targetSdk 28 以支持现有本地 Linux 执行架构，不是 Google Play 提交包。公开分发与应用市场审核为不同事项。手机授权和应用商店政策仍适用。
 
-本次新增的预装包已通过导入、隔离、名称图标和空初始记录检查。因用户暂时使用手机，最终 APK 的完整真机回归尚未进行；网页／自动测试不等同于实际跨应用比价成功。
+本次新增的预装包已通过导入、隔离、名称图标和空初始记录检查，安装包已核对签名、完整性及预装资源。完整真机回归尚未完成；网页／自动测试不等同于实际跨应用比价成功。
+
+## 版本更新
+
+后续版本统一发布到本仓库的 Releases。正式安装包使用相同包名及签名，下载后覆盖安装即可保留应用数据；测试包使用独立身份。本版尚未启用应用内自动更新，请从[发布页](https://github.com/jorylai/DSH-AnyApp/releases/latest)检查新版本。不要安装来源不明或签名不同的替代包。

@@ -6,8 +6,8 @@
 
 This repository currently **does not accept any external pull requests** (code, docs, configuration or templates).
 
-- External PRs are closed automatically by the intake check, see `.github/workflows/pr-gate.yml`.
-- For feature ideas, improvements or bug reports, please [open an issue](https://github.com/ccch1mneyyy/dsh-Go/issues/new/choose) with the use case and expected behavior.
+- External PRs are not merged for now; please discuss changes through issues first.
+- For feature ideas, improvements or bug reports, please [open an issue in AnyApp's repository](https://github.com/jorylai/DSH-AnyApp/issues/new) with the use case and expected behavior.
 - Internal PRs by the maintainer (and maintainer agents) are unaffected.
 
 This is temporary; this page will be updated when external PRs reopen.
@@ -44,7 +44,7 @@ Use one PR for one independently reviewable problem. Explain the old behavior, i
 
 Run these commands from the repository root. Select checks relevant to your change and record the commands and actual results in the PR. If a device, asset or dependency is unavailable, say what was not run and why.
 
-[CI](.github/workflows/ci.yml) runs these checks on PRs and `main`: a PR runs the general checks plus what it touches, a push to `main` runs everything, and `CI OK` is the result to read. CI has no devices or real accounts, so verify those separately.
+This source snapshot does not include upstream CI workflows. Run the checks relevant to your change and verify devices and real accounts separately. Passing local tests does not establish successful device behavior.
 
 **Flutter app:**
 
