@@ -20,7 +20,7 @@
 
 [下载三张产品图原图（ZIP）](https://github.com/jorylai/DSH-AnyApp/releases/download/v0.10.11/DSH-AnyApp-Launch-Images-v3.zip) · [查看图片目录](docs/images/launch/README.md)
 
-本项目是社区衍生项目，非 DeepSeek 官方产品。上游代码来源：ccch1mneyyy/dsh-go；遵循 AGPL-3.0 及各第三方组件许可，见 LICENSE、THIRD_PARTY_NOTICES.md、ASSETS.md。
+本项目是社区衍生项目，非 DeepSeek 官方产品。
 
 ## 致谢
 
