@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../l10n/l10n.dart';
 import '../wish/wish_device.dart';
@@ -34,11 +35,34 @@ class AnyappAnalyticsNotice extends ConsumerWidget {
               ? null
               : (enabled) async {
                   final analytics = ref.read(anyappAnalyticsProvider.notifier);
+                  final close = !enabled && analytics.diagnosticsStarted;
+                  if (close) {
+                    final confirmed = await showDialog<bool>(
+                      context: context,
+                      builder: (context) => AlertDialog(
+                        title: Text(appL10n.anyappAnalyticsCloseTitle),
+                        content: Text(appL10n.anyappAnalyticsCloseHelp),
+                        actions: [
+                          TextButton(onPressed: () => Navigator.pop(context, false), child: Text(appL10n.wishKeep)),
+                          FilledButton(
+                            onPressed: () => Navigator.pop(context, true),
+                            child: Text(appL10n.anyappAnalyticsClose),
+                          ),
+                        ],
+                      ),
+                    );
+                    if (confirmed != true) return;
+                  }
                   await analytics.setEnabled(enabled);
+                  if (close) await analytics.closeAfterDiagnosticsOptOut();
                   if (enabled) {
                     analytics.track(AnyappEvent.analyticsPreference, page: page, outcome: AnyappOutcome.success);
                   }
                 },
+        ),
+        TextButton(
+          onPressed: () => launchUrl(Uri.parse('https://www.umeng.com/page/policy/'), mode: LaunchMode.externalApplication),
+          child: Text(appL10n.anyappAnalyticsPolicy),
         ),
         if (state.status == AnyappAnalyticsStatus.storageFailure)
           Padding(
@@ -128,6 +152,10 @@ class _AnyappAnalyticsPageState extends ConsumerState<AnyappAnalyticsPage> {
   String _status(AnyappAnalyticsState state) {
     if (state.status == AnyappAnalyticsStatus.storageFailure) return appL10n.anyappAnalyticsStorageFailed;
     if (!state.enabled) return appL10n.anyappAnalyticsOff;
+    if (state.diagnosticsConfigured) {
+      if (state.diagnosticsFailed) return appL10n.anyappAnalyticsSdkFailed;
+      return state.diagnosticsReady ? appL10n.anyappAnalyticsSdkReady : appL10n.anyappAnalyticsSdkStarting;
+    }
     if (!state.endpointConfigured) return appL10n.anyappAnalyticsLocal;
     return switch (state.status) {
       AnyappAnalyticsStatus.sending => appL10n.anyappAnalyticsSending,
@@ -160,8 +188,12 @@ class _AnyappAnalyticsPageState extends ConsumerState<AnyappAnalyticsPage> {
           children: [
             WishRow(
               title: _status(state),
-              help: state.endpointConfigured ? appL10n.anyappAnalyticsIndependent : appL10n.anyappAnalyticsUnconfigured,
-              icon: state.endpointConfigured ? Icons.cloud_outlined : Icons.phone_android_rounded,
+              help: state.endpointConfigured || state.diagnosticsConfigured
+                  ? appL10n.anyappAnalyticsIndependent
+                  : appL10n.anyappAnalyticsUnconfigured,
+              icon: state.endpointConfigured || state.diagnosticsConfigured
+                  ? Icons.cloud_outlined
+                  : Icons.phone_android_rounded,
             ),
             WishRow(title: appL10n.anyappAnalyticsQueue, help: '${state.queued}', icon: Icons.layers_outlined),
             Padding(

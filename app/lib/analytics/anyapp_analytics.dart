@@ -11,6 +11,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../state/app_info.dart';
+import 'anyapp_umeng.dart';
 
 enum AnyappEvent {
   appOpen,
@@ -60,6 +61,9 @@ class AnyappAnalyticsState {
     this.queued = 0,
     this.endpointConfigured = false,
     this.status = AnyappAnalyticsStatus.disabled,
+    this.diagnosticsConfigured = false,
+    this.diagnosticsReady = false,
+    this.diagnosticsFailed = false,
   });
 
   final bool loaded;
@@ -67,6 +71,7 @@ class AnyappAnalyticsState {
   final int queued;
   final bool endpointConfigured;
   final AnyappAnalyticsStatus status;
+  final bool diagnosticsConfigured, diagnosticsReady, diagnosticsFailed;
 }
 
 /// There is intentionally no endpoint fallback. Builds cannot inherit DSH Go's
@@ -187,6 +192,7 @@ class AnyappAnalyticsConfig {
     this.batchSize = 20,
     this.identityLifetime = const Duration(days: 7),
     this.appVersion = AppInfo.version,
+    this.diagnostics,
   }) : endpoint = anyappAnalyticsEndpointFrom((endpoint ?? _buildEndpoint)?.toString() ?? ''),
        now = now ?? DateTime.now;
 
@@ -201,9 +207,12 @@ class AnyappAnalyticsConfig {
   final int batchSize;
   final Duration identityLifetime;
   final String appVersion;
+  final AnyappDiagnosticsSdk? diagnostics;
 }
 
-final anyappAnalyticsConfigProvider = Provider<AnyappAnalyticsConfig>((ref) => AnyappAnalyticsConfig());
+final anyappAnalyticsConfigProvider = Provider<AnyappAnalyticsConfig>(
+  (ref) => AnyappAnalyticsConfig(diagnostics: AnyappUmeng.supported ? AnyappUmeng.instance : null),
+);
 
 final anyappAnalyticsProvider = NotifierProvider<AnyappAnalytics, AnyappAnalyticsState>(AnyappAnalytics.new);
 
@@ -223,6 +232,24 @@ class AnyappAnalytics extends Notifier<AnyappAnalyticsState> {
   bool _disposed = false;
   int _generation = 0;
   int _failures = 0;
+  bool _diagnosticsReady = false, _diagnosticsFailed = false;
+  bool get diagnosticsStarted => _config.diagnostics?.started == true;
+
+  Future<void> closeAfterDiagnosticsOptOut() async => _config.diagnostics?.closeAfterOptOut();
+
+  Future<void> _startDiagnostics({bool explicitConsent = false}) async {
+    final sdk = _config.diagnostics;
+    if (sdk == null || !_enabled || _disposed) return;
+    try {
+      _diagnosticsReady = await sdk.enable(explicitConsent: explicitConsent);
+      if (!_diagnosticsReady) {
+        _enabled = false;
+        _queue.clear();
+      }
+    } catch (_) {
+      _diagnosticsFailed = true;
+    }
+  }
 
   @override
   AnyappAnalyticsState build() {
@@ -248,6 +275,9 @@ class AnyappAnalytics extends Notifier<AnyappAnalyticsState> {
       queued: _queue.length,
       endpointConfigured: _config.endpoint != null,
       status: status,
+      diagnosticsConfigured: _config.diagnostics != null,
+      diagnosticsReady: _enabled && _diagnosticsReady,
+      diagnosticsFailed: _diagnosticsFailed,
     );
   }
 
@@ -276,7 +306,10 @@ class AnyappAnalytics extends Notifier<AnyappAnalyticsState> {
     if (text != null && text.length <= 512000) {
       try {
         final record = jsonDecode(text);
-        if (record is Map && record['schema'] == 1 && record['enabled'] == true) {
+        if (record is Map &&
+            record['schema'] == 1 &&
+            record['enabled'] == true &&
+            (_config.diagnostics == null || record['diagnosticsConsent'] == 1)) {
           final created = DateTime.tryParse('${record['installCreated'] ?? ''}');
           final id = record['installId'];
           if (created != null && _validId(id)) {
@@ -303,6 +336,8 @@ class AnyappAnalytics extends Notifier<AnyappAnalyticsState> {
             }
             _rotateIfExpired();
             await _persist();
+            await _startDiagnostics();
+            if (!_enabled) await _persist();
           }
         }
       } on FormatException {
@@ -335,6 +370,7 @@ class AnyappAnalytics extends Notifier<AnyappAnalyticsState> {
     jsonEncode({
       'schema': 1,
       'enabled': _enabled,
+      if (_enabled && _config.diagnostics != null) 'diagnosticsConsent': 1,
       if (_enabled) 'installId': _installId,
       if (_enabled) 'installCreated': _installCreated!.toIso8601String(),
       if (_enabled && _failures > 0) 'failures': _failures,
@@ -379,6 +415,10 @@ class AnyappAnalytics extends Notifier<AnyappAnalyticsState> {
         rethrow;
       }
       _publish(_idle);
+      if (enabled) {
+        await _startDiagnostics(explicitConsent: true);
+        _publish(_idle);
+      }
     });
   }
 
@@ -408,6 +448,14 @@ class AnyappAnalytics extends Notifier<AnyappAnalyticsState> {
         }
         _queue.add(entry);
         await _persist();
+        if (_diagnosticsReady && _enabled) {
+          _config.diagnostics?.event(event.name, {
+            if (page != null) 'page': page.name,
+            if (outcome != null) 'outcome': outcome.name,
+            if (preset != null) 'preset': preset.name,
+            if (elapsed != null) 'elapsed_ms': elapsed.inMilliseconds.clamp(0, 86400000),
+          });
+        }
         _publish(_idle);
         if (_config.endpoint != null) unawaited(flush());
       }),

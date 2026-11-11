@@ -1549,10 +1549,10 @@ class L10nZh extends L10n {
   String get anyappAnalyticsChoice => '帮助完善体验（可选）';
 
   @override
-  String get anyappAnalyticsNotice => '记录页面访问、操作结果和耗时；不记录输入、对话、截图或作品内容。可随时关闭。';
+  String get anyappAnalyticsNotice => '帮助我们发现卡顿和崩溃。开启后，友盟会处理设备及应用信息、使用统计和异常日志；不主动采集对话、作品内容或截图。';
 
   @override
-  String get anyappAnalyticsHelp => '由 DSH AnyApp 独立管理。关闭后停止记录并清除待处理统计，不影响作品、登录与手机能力。';
+  String get anyappAnalyticsHelp => '使用友盟 U-App 与 U-APM 改善安卓体验。你可随时关闭；关闭后需退出应用，让已经启动的监控完全停止。作品、账号和记录都会保留。';
 
   @override
   String get anyappAnalyticsStatus => '记录状态';
@@ -1579,7 +1579,7 @@ class L10nZh extends L10n {
   String get anyappAnalyticsStorageFailed => '更改或记录未能保存到本机，请重试保存。如果刚关闭统计，请确认保存成功再离开。';
 
   @override
-  String get anyappAnalyticsIndependent => '仅发送到本版本明确配置的 AnyApp 统计服务。';
+  String get anyappAnalyticsIndependent => '统计与诊断发送至 DSH AnyApp 对应的友盟应用。';
 
   @override
   String get anyappAnalyticsUnconfigured => '尚未配置独立统计服务，记录不会自动离开手机。';
@@ -1604,6 +1604,27 @@ class L10nZh extends L10n {
 
   @override
   String get anyappAnalyticsRetrySave => '重试保存';
+
+  @override
+  String get anyappAnalyticsCloseTitle => '关闭统计与诊断？';
+
+  @override
+  String get anyappAnalyticsCloseHelp => '为完全停止已经启动的监控，保存选择后将退出 AnyApp。重新打开即可继续使用，作品、账号和记录都会保留。';
+
+  @override
+  String get anyappAnalyticsClose => '关闭并退出';
+
+  @override
+  String get anyappAnalyticsSdkReady => '友盟统计与诊断已开启';
+
+  @override
+  String get anyappAnalyticsSdkStarting => '正在准备统计与诊断';
+
+  @override
+  String get anyappAnalyticsSdkFailed => '统计初始化未完成；不影响应用使用，重新打开后会重试。';
+
+  @override
+  String get anyappAnalyticsPolicy => '查看友盟隐私说明';
 
   @override
   String get anyappGuideTitle => '灵感与用法';

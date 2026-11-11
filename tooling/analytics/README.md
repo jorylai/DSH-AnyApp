@@ -1,14 +1,29 @@
 # AnyApp 前端事件协议 v1
 
+
+## Android 友盟接入（0.10.12）
+
+Android 使用官方 umeng-cli 0.2.17、umeng-skills-index 1.13.0 的 umeng-onboarding 流程。全流程包装器在 Mac 上错误地强制要求 CocoaPods，因此保留编排阶段记录，补调同一官方套件内未修改的 Flutter 核心安装程序；未创建 iOS 工程。安装顺序为统计，再安装 APM 及原生崩溃配置。
+
+实际解析的 Flutter 依赖为 umeng_common_sdk 1.3.1、umeng_apm_sdk 2.3.7；Android 为 Common 10.0.1、ASMS 1.8.7.2、APM 2.0.1。公共依赖通过 Flutter 插件传递引入一次。渠道为用户指定的 `https://github.com/jorylai/DSH-AnyApp`，不接入推送，不需要 Message Secret。保留应用 http 1.6.x，通过 override 兼容 APM 的旧版约束；APM 使用的 MultipartRequest/MultipartFile API 保持兼容。
+
+初始化顺序：Application 配置 UMCrash 并 preInit → 页面启动 → 用户同意本版本披露并保存 → 原生同意状态核对 → initCommon → APM.init → 页面观察及固定枚举事件。官方 Common Flutter 插件的 initCommon 在 Android 不返回 MethodChannel 结果，调用遵循官方示例，不 await 未完成的 Future；避免挡住后续 APM 初始化。APM 不重复创建 Flutter binding 或重启 Widget 树，保留原有动画时钟。未开启自动网络请求追踪，不向统计事件添加账号、提示词或作品内容。
+
+默认关闭。旧版仅本机统计的同意不自动授予友盟；统计记录增加 diagnosticsConsent 版本。关闭时明确确认退出应用以终止 SDK 内部计时器；原生撤回记录优先于过期的 Dart 同意记录。应用账号、作品和业务记录不属于清理范围。诊断 SDK 本身处理设备/应用信息、性能和异常日志，详见应用内友盟隐私链接。
+
+清洁构建时，先安装官方技能，再在 flutter pub get 后运行套件自带的 `scripts/umeng-flutter-apm-integration/plugin_fixer.py <app路径>`，修复官方插件的桩文件、compileSdk 和 jcenter 兼容问题；不要把本机 pub-cache 的修改误认为已经写入源码。
+
+验证以本轮启动前后的 getTodayData 增量、端侧 SDK 证据及 APM 异常记录分别判断。初始化或编译通过不等于数据已入库；免费版采样及接口权限限制须在验证记录中单独标注。
+
 [English](README.en.md)
 
 本模块记录产品使用流程，不记录业务内容。旧 usage_stats_* 同意、随机标识、队列及旧上报器已停用；不能通过 DSH_USAGE_ENDPOINT 恢复。新开关默认关闭，不继承旧同意。它与 DeepSeek 引擎的模型请求会话日志及反馈诊断分别管理。
 
 ## 接收地址
 
-构建时显式配置 `--dart-define=ANYAPP_ANALYTICS_ENDPOINT=https://<自有服务>/api/events`。默认没有地址；未配置时，用户主动开启后仅在本机记录和导出。配置只接受 HTTPS，不允许用户名、密码、query、fragment，不接受 dshtui.com 及其子域，不跟随重定向。客户端请求标识为 dsh-anyapp，无 Cookie/Authorization。
+构建时显式配置 `--dart-define=ANYAPP_ANALYTICS_ENDPOINT=https://<自有服务>/api/events`。默认没有自有服务地址；未配置时自有队列仅在本机记录和导出。Android 用户开启友盟开关后，固定事件仍由独立 SDK 发送友盟。配置只接受 HTTPS，不允许用户名、密码、query、fragment，不接受 dshtui.com 及其子域，不跟随重定向。客户端请求标识为 dsh-anyapp，无 Cookie/Authorization。
 
-此仓库新增的是前端与协议，没有部署接收服务或运营看板，也没有实际发送测试数据。
+本节仅描述可选自有接收服务；不代表该接收服务已部署。友盟 SDK 走前述独立接入路径。
 
 ## 请求与确认
 
@@ -24,7 +39,7 @@
 | app_version | 当前构建版本 |
 | page | 可选，固定页面枚举 |
 | outcome | 可选，start/success/failure/cancelled/skipped |
-| preset | 可选，voyo/calorie/imported |
+| preset | 可选，voyo/calorie/radar/pomodoro/imported |
 | elapsed_ms | 可选，非负耗时，上限24小时 |
 
 没有自由文本属性入口，不传作品ID/名称、提示词、对话、账号、授权网址、错误消息、截图、读屏内容、商品、健康或行程记录。
@@ -49,3 +64,5 @@
 - permissionResult：重新读取原生状态后记录，打开授权页本身不代表授权成功。
 
 固定枚举及唯一实现见 `app/lib/analytics/anyapp_analytics.dart`。源头埋点覆盖引导、登录、首页、创作、作品界面与预置入口。模型内部推理、后台任务执行完成率未在这版前端事件中冒充已验收。
+
+本轮验证（2026-11-11）：26 项统计／界面测试、静态检查、文案一致性检查通过；正式包 0.10.12+2026110935 已覆盖安装，首页仍有原有 8 个作品。U-App 官方接口确认启动 0→1、新增 0→1；UMCrash 捕获一次已授权的原生测试崩溃，重启恢复。U-APM 云端回查返回 threshold_free，未确认异常云端入库；未单独注入 Dart 异常。

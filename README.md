@@ -1,8 +1,8 @@
-# DSH AnyApp 0.10.11
+# DSH AnyApp 0.10.12
 
 一句话，创造适合自己的 Android 小应用。
 
-[下载 0.10.11 APK](https://github.com/jorylai/DSH-AnyApp/releases/download/v0.10.11/DSH-AnyApp-0.10.11-arm64.apk) · [发布说明与全部下载](https://github.com/jorylai/DSH-AnyApp/releases/latest) · [English](README.en.md)
+[下载 0.10.12 APK](https://github.com/jorylai/DSH-AnyApp/releases/download/v0.10.12/DSH-AnyApp-0.10.12-arm64.apk) · [发布说明与全部下载](https://github.com/jorylai/DSH-AnyApp/releases/latest) · [English](README.en.md)
 
 基于真实 DeepSeek Harness Creator，可继续修改、导入和分享作品。首次安装自动准备比价雷达 1.25.0 与番茄钟。手机读屏、悬浮动作、提醒等能力由用户按需要开启。
 
@@ -30,18 +30,19 @@ DSH AnyApp 在这一基础上继续探索作品创作、分享与日常使用体
 
 ## 安装
 
-选择 DSH-AnyApp-0.10.11-arm64.apk，适用 Android 8 及以上 ARM64 手机。包名 app.dshwish，与此前正式包签名一致；已有用户覆盖安装，不要卸载或清除数据。测试版 app.dshwish.fresh 有独立数据空间。手机会按系统规则提示安装与授权。
+选择 DSH-AnyApp-0.10.12-arm64.apk，适用 Android 8 及以上 ARM64 手机。包名 app.dshwish，与此前正式包签名一致；已有用户覆盖安装，不要卸载或清除数据。测试版 app.dshwish.fresh 有独立数据空间。手机会按系统规则提示安装与授权。
 
-这次发布更新预装比价雷达，保留作者提供的代码、名称和图标。旧作品和记录不会因预装更新被覆盖。导入作品的继续创作、权限页面整合、悬浮入口引导等修复也包含在此版本。
+0.10.12 新增 Android 友盟 U-App 使用统计与 U-APM 性能／异常监控，默认关闭，在「设置 → 数据与隐私 → 体验与诊断」自愿开启。旧版仅本机统计的选择不会自动开启第三方统计；账号、作品与记录保留。SDK 与验证说明见 [统计接入文档](tooling/analytics/README.md)。
 
 ## 构建
 
 - Flutter 3.47.9 / Dart 3.13.7，JDK 17，Android SDK 36。
 - `app` 为 Flutter 应用；`packages` 为本地 Dart 库；`runtime` 包含 Linux 运行时构建脚本、锁文件和 DSH 补丁；`products/radar-release` 为此次预装作品。
 - 运行时按 `runtime/build-runtime.sh` 在 Linux 构建 ARM64 产物，放入 `runtime/out/arm64-v8a`。版本及输入校验见脚本、`runtime/locks` 和 `runtime/patches/pins.json`。
-- `cd app && flutter pub get`，再从根目录执行 `bash tooling/build-apk.sh --build-name 0.10.11`。
+- `cd app && flutter pub get`，再从根目录执行 `bash tooling/build-apk.sh --build-name 0.10.12`。
 - 本源码不含开发者私钥、签名密码、本地路径配置或登录态。自行构建使用自己的签名；自己的签名不能覆盖官方分发包。
 - `node products/radar-release/build.mjs` 可重建雷达预置资源。
+- 友盟 Flutter 插件的清洁构建兼容修复须按 [接入文档](tooling/analytics/README.md) 运行官方修复器。
 
 ## 当前边界
 

@@ -1629,11 +1629,11 @@ class L10nEn extends L10n {
 
   @override
   String get anyappAnalyticsNotice =>
-      'Record page visits, outcomes and timing. No input, conversations, screenshots or work content. You can turn this off anytime.';
+      'Help us find slow screens and crashes. When enabled, Umeng processes device and app information, usage statistics and error logs. We do not actively collect conversations, work content or screenshots.';
 
   @override
   String get anyappAnalyticsHelp =>
-      'Managed independently by DSH AnyApp. Turning this off stops recording and clears pending statistics. Your works, sign-in and phone capabilities are unaffected.';
+      'Umeng U-App and U-APM help improve the Android experience. You can turn them off anytime. The app then needs to close to fully stop monitoring. Works, accounts and records are kept.';
 
   @override
   String get anyappAnalyticsStatus => 'Recording status';
@@ -1661,8 +1661,7 @@ class L10nEn extends L10n {
       'Could not save changes or records locally. Retry saving. If you just turned statistics off, confirm that saving succeeds before leaving.';
 
   @override
-  String get anyappAnalyticsIndependent =>
-      'Sent only to the AnyApp statistics service explicitly configured in this build.';
+  String get anyappAnalyticsIndependent => 'Statistics and diagnostics go to this AnyApp application in Umeng.';
 
   @override
   String get anyappAnalyticsUnconfigured =>
@@ -1689,6 +1688,29 @@ class L10nEn extends L10n {
 
   @override
   String get anyappAnalyticsRetrySave => 'Retry saving';
+
+  @override
+  String get anyappAnalyticsCloseTitle => 'Turn off statistics and diagnostics?';
+
+  @override
+  String get anyappAnalyticsCloseHelp =>
+      'AnyApp will save your choice and close to fully stop active monitoring. Reopen it to continue. Your works, accounts and records are kept.';
+
+  @override
+  String get anyappAnalyticsClose => 'Turn off and close';
+
+  @override
+  String get anyappAnalyticsSdkReady => 'Umeng statistics and diagnostics enabled';
+
+  @override
+  String get anyappAnalyticsSdkStarting => 'Preparing statistics and diagnostics';
+
+  @override
+  String get anyappAnalyticsSdkFailed =>
+      'Statistics could not start. The app remains usable and will retry next time it opens.';
+
+  @override
+  String get anyappAnalyticsPolicy => 'Umeng privacy information';
 
   @override
   String get anyappGuideTitle => 'Ideas & guidance';

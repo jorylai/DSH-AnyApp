@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:umeng_apm_sdk/umeng_apm_sdk.dart';
 
 import 'l10n/l10n.dart';
 import 'performance/performance_state.dart';
@@ -180,6 +181,9 @@ class _DshAppState extends ConsumerState<DshApp> with WidgetsBindingObserver {
     }
     return MaterialApp(
       title: AppInfo.name,
+      navigatorObservers: [
+        if (ref.watch(anyappAnalyticsProvider).diagnosticsReady) ApmNavigatorObserver.singleInstance,
+      ],
       debugShowCheckedModeBanner: false,
       theme: _light,
       darkTheme: _dark,

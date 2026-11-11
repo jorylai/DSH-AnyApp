@@ -2,8 +2,8 @@
   "anyappAnalyticsTitle": "Experience & diagnostics",
   "anyappAnalyticsInvitation": "A little smoother,\nevery time.",
   "anyappAnalyticsChoice": "Help improve the experience (optional)",
-  "anyappAnalyticsNotice": "Record page visits, outcomes and timing. No input, conversations, screenshots or work content. You can turn this off anytime.",
-  "anyappAnalyticsHelp": "Managed independently by DSH AnyApp. Turning this off stops recording and clears pending statistics. Your works, sign-in and phone capabilities are unaffected.",
+  "anyappAnalyticsNotice": "Help us find slow screens and crashes. When enabled, Umeng processes device and app information, usage statistics and error logs. We do not actively collect conversations, work content or screenshots.",
+  "anyappAnalyticsHelp": "Umeng U-App and U-APM help improve the Android experience. You can turn them off anytime. The app then needs to close to fully stop monitoring. Works, accounts and records are kept.",
   "anyappAnalyticsStatus": "Recording status",
   "anyappAnalyticsOff": "Off",
   "anyappAnalyticsLocal": "Stored on this phone only",
@@ -12,7 +12,7 @@
   "anyappAnalyticsRetry": "Sync incomplete; retrying later",
   "anyappAnalyticsDelivered": "Statistics synced",
   "anyappAnalyticsStorageFailed": "Could not save changes or records locally. Retry saving. If you just turned statistics off, confirm that saving succeeds before leaving.",
-  "anyappAnalyticsIndependent": "Sent only to the AnyApp statistics service explicitly configured in this build.",
+  "anyappAnalyticsIndependent": "Statistics and diagnostics go to this AnyApp application in Umeng.",
   "anyappAnalyticsUnconfigured": "No independent statistics service is configured. Records will not leave this phone automatically.",
   "anyappAnalyticsQueue": "Pending records",
   "anyappAnalyticsExport": "Export diagnostic records",
@@ -20,5 +20,12 @@
   "anyappAnalyticsClear": "Clear statistics",
   "anyappAnalyticsClearHelp": "Clear local statistics and pending records. This does not delete records already sent or affect works and accounts.",
   "anyappAnalyticsCleared": "Local statistics cleared.",
-  "anyappAnalyticsRetrySave": "Retry saving"
+  "anyappAnalyticsRetrySave": "Retry saving",
+  "anyappAnalyticsCloseTitle": "Turn off statistics and diagnostics?",
+  "anyappAnalyticsCloseHelp": "AnyApp will save your choice and close to fully stop active monitoring. Reopen it to continue. Your works, accounts and records are kept.",
+  "anyappAnalyticsClose": "Turn off and close",
+  "anyappAnalyticsSdkReady": "Umeng statistics and diagnostics enabled",
+  "anyappAnalyticsSdkStarting": "Preparing statistics and diagnostics",
+  "anyappAnalyticsSdkFailed": "Statistics could not start. The app remains usable and will retry next time it opens.",
+  "anyappAnalyticsPolicy": "Umeng privacy information"
 }

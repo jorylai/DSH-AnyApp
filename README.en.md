@@ -1,8 +1,8 @@
-# DSH AnyApp 0.10.11
+# DSH AnyApp 0.10.12
 
 Create personal Android apps with natural language and real DeepSeek Harness Creator. New installs include Price Radar 1.25.0 and Pomodoro. Existing works and records are not replaced by starter updates.
 
-[Download 0.10.11 APK](https://github.com/jorylai/DSH-AnyApp/releases/download/v0.10.11/DSH-AnyApp-0.10.11-arm64.apk) · [Release notes and downloads](https://github.com/jorylai/DSH-AnyApp/releases/latest) · [中文](README.md)
+[Download 0.10.12 APK](https://github.com/jorylai/DSH-AnyApp/releases/download/v0.10.12/DSH-AnyApp-0.10.12-arm64.apk) · [Release notes and downloads](https://github.com/jorylai/DSH-AnyApp/releases/latest) · [中文](README.md)
 
 ![DSH AnyApp: turn ideas into personal Android apps](docs/images/launch/01-anyapp.png)
 
@@ -24,11 +24,15 @@ Special thanks to [DSH Go](https://github.com/ccch1mneyyy/dsh-go), its author an
 
 ## Install and build
 
-Use DSH-AnyApp-0.10.11-arm64.apk on ARM64 Android 8+. Upgrade in place with the same package and signing key; do not uninstall or clear data. app.dshwish.fresh is a separate testing identity.
+Use DSH-AnyApp-0.10.12-arm64.apk on ARM64 Android 8+. Upgrade in place with the same package and signing key; do not uninstall or clear data. app.dshwish.fresh is a separate testing identity.
 
-Flutter 3.47.9 / Dart 3.13.7, JDK 17, Android SDK 36. Build the ARM64 Linux runtime using runtime/build-runtime.sh and place its output in runtime/out/arm64-v8a. Run flutter pub get in app, then bash tooling/build-apk.sh --build-name 0.10.11 from the root. node products/radar-release/build.mjs regenerates the radar starter.
+Flutter 3.47.9 / Dart 3.13.7, JDK 17, Android SDK 36. Build the ARM64 Linux runtime using runtime/build-runtime.sh and place its output in runtime/out/arm64-v8a. Run flutter pub get in app, then bash tooling/build-apk.sh --build-name 0.10.12 from the root. node products/radar-release/build.mjs regenerates the radar starter.
 
 Signing keys, local configuration and accounts are excluded. Use your own signing key for your builds. AGPL-3.0 and third-party licenses apply; see LICENSE, THIRD_PARTY_NOTICES.md and ASSETS.md.
+
+## Optional diagnostics
+
+Android U-App analytics and U-APM diagnostics are disabled by default. Enable them in Settings → Data and privacy → Experience and diagnostics. Previous local-only consent does not enable third-party collection. Accounts, works and records remain intact. See [SDK setup and validation](tooling/analytics/README.en.md).
 
 ## Current limits
 

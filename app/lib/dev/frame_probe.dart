@@ -3,7 +3,7 @@ import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:flutter/widgets.dart';
+import 'package:umeng_apm_sdk/umeng_apm_sdk.dart';
 
 /// Opt-in diagnostics only. Neither collection nor reporting requests frames.
 const _enabled = !kReleaseMode && bool.fromEnvironment('DSH_FRAME_PROBE');
@@ -90,7 +90,7 @@ Future<void> runWithFrameProbe(Future<void> Function() startApp) {
   );
 }
 
-class _ProbeBinding extends WidgetsFlutterBinding {
+class _ProbeBinding extends ApmWidgetsFlutterBinding {
   _ProbeBinding(this.probe);
 
   final _Probe probe;

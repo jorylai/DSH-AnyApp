@@ -2933,13 +2933,13 @@ abstract class L10n {
   /// No description provided for @anyappAnalyticsNotice.
   ///
   /// In zh, this message translates to:
-  /// **'记录页面访问、操作结果和耗时；不记录输入、对话、截图或作品内容。可随时关闭。'**
+  /// **'帮助我们发现卡顿和崩溃。开启后，友盟会处理设备及应用信息、使用统计和异常日志；不主动采集对话、作品内容或截图。'**
   String get anyappAnalyticsNotice;
 
   /// No description provided for @anyappAnalyticsHelp.
   ///
   /// In zh, this message translates to:
-  /// **'由 DSH AnyApp 独立管理。关闭后停止记录并清除待处理统计，不影响作品、登录与手机能力。'**
+  /// **'使用友盟 U-App 与 U-APM 改善安卓体验。你可随时关闭；关闭后需退出应用，让已经启动的监控完全停止。作品、账号和记录都会保留。'**
   String get anyappAnalyticsHelp;
 
   /// No description provided for @anyappAnalyticsStatus.
@@ -2993,7 +2993,7 @@ abstract class L10n {
   /// No description provided for @anyappAnalyticsIndependent.
   ///
   /// In zh, this message translates to:
-  /// **'仅发送到本版本明确配置的 AnyApp 统计服务。'**
+  /// **'统计与诊断发送至 DSH AnyApp 对应的友盟应用。'**
   String get anyappAnalyticsIndependent;
 
   /// No description provided for @anyappAnalyticsUnconfigured.
@@ -3043,6 +3043,48 @@ abstract class L10n {
   /// In zh, this message translates to:
   /// **'重试保存'**
   String get anyappAnalyticsRetrySave;
+
+  /// No description provided for @anyappAnalyticsCloseTitle.
+  ///
+  /// In zh, this message translates to:
+  /// **'关闭统计与诊断？'**
+  String get anyappAnalyticsCloseTitle;
+
+  /// No description provided for @anyappAnalyticsCloseHelp.
+  ///
+  /// In zh, this message translates to:
+  /// **'为完全停止已经启动的监控，保存选择后将退出 AnyApp。重新打开即可继续使用，作品、账号和记录都会保留。'**
+  String get anyappAnalyticsCloseHelp;
+
+  /// No description provided for @anyappAnalyticsClose.
+  ///
+  /// In zh, this message translates to:
+  /// **'关闭并退出'**
+  String get anyappAnalyticsClose;
+
+  /// No description provided for @anyappAnalyticsSdkReady.
+  ///
+  /// In zh, this message translates to:
+  /// **'友盟统计与诊断已开启'**
+  String get anyappAnalyticsSdkReady;
+
+  /// No description provided for @anyappAnalyticsSdkStarting.
+  ///
+  /// In zh, this message translates to:
+  /// **'正在准备统计与诊断'**
+  String get anyappAnalyticsSdkStarting;
+
+  /// No description provided for @anyappAnalyticsSdkFailed.
+  ///
+  /// In zh, this message translates to:
+  /// **'统计初始化未完成；不影响应用使用，重新打开后会重试。'**
+  String get anyappAnalyticsSdkFailed;
+
+  /// No description provided for @anyappAnalyticsPolicy.
+  ///
+  /// In zh, this message translates to:
+  /// **'查看友盟隐私说明'**
+  String get anyappAnalyticsPolicy;
 
   /// No description provided for @anyappGuideTitle.
   ///

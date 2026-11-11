@@ -863,3 +863,10 @@ of the date such litigation is filed.
 Bundled Google ML Kit Chinese/Latin text recognition 16.0.1 is used for on-device OCR. Artifact POMs identify the ML Kit Terms of Service: https://developers.google.com/ml-kit/terms . Model weights and SDK remain under their own terms; the app does not relabel them as AGPL.
 
 中英文文字识别模型随 APK 分发，识字在设备执行。Google ML Kit SDK 和模型遵守其原有服务条款，见上方链接。
+
+
+## Umeng Android diagnostics (0.10.12)
+
+This release adds the official `umeng_common_sdk` 1.3.1 and `umeng_apm_sdk` 2.3.7 Flutter plugins, resolving Android Common 10.0.1, ASMS 1.8.7.2 and APM 2.0.1. Vendor SDKs remain subject to their own applicable terms and are not relicensed as AGPL by this project. Their distributed Flutter LICENSE files contain only a placeholder; no substitute license is asserted here.
+
+友盟 SDK 在用户自愿开启「体验与诊断」后初始化，处理设备／应用信息、使用统计、性能与异常日志。说明及供应商隐私政策：https://www.umeng.com/page/policy/ 。不向固定统计事件添加提示词、账号、作品名称、截图或业务记录。SDK 自身的异常日志和设备信息处理按供应商政策说明。

@@ -1,4 +1,5 @@
 import 'package:flutter/widgets.dart';
+import 'package:umeng_apm_sdk/umeng_apm_sdk.dart';
 
 /// 动画时钟防跳帧。
 ///
@@ -44,7 +45,7 @@ class FrameClock {
 }
 
 /// 把 [FrameClock] 接进帧调度。要在其他任何 binding 之前创建,而且只能建一次。
-class SteadyFrameBinding extends WidgetsFlutterBinding {
+class SteadyFrameBinding extends ApmWidgetsFlutterBinding {
   @override
   void handleBeginFrame(Duration? rawTimeStamp) {
     super.handleBeginFrame(rawTimeStamp == null ? null : FrameClock.instance.adjust(rawTimeStamp));

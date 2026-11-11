@@ -6,7 +6,7 @@ import '../l10n/l10n.dart';
 /// constant kept in sync with the packaged app version. Release builds can
 /// override it: `flutter build apk --dart-define=DSH_APP_VERSION=1.2.0+7`.
 abstract final class AppInfo {
-  static const version = String.fromEnvironment('DSH_APP_VERSION', defaultValue: '0.10.11+2026110930');
+  static const version = String.fromEnvironment('DSH_APP_VERSION', defaultValue: '0.10.12+2026110930');
 
   /// "1.0.0 (1)" for display.
   static String get displayVersion {

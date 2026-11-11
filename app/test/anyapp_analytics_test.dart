@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:dsh_app/analytics/anyapp_analytics.dart';
+import 'package:dsh_app/analytics/anyapp_umeng.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -43,8 +44,30 @@ class _Http implements AnyappAnalyticsTransport {
   }
 }
 
+class _Diagnostics implements AnyappDiagnosticsSdk {
+  final grants = <bool>[];
+  final events = <Map<String, dynamic>>[];
+  bool allowed = true;
+  bool fail = false;
+  @override
+  bool started = false;
+  @override
+  Future<bool> enable({bool explicitConsent = false}) async {
+    grants.add(explicitConsent);
+    if (fail) throw StateError('sdk-unavailable');
+    started = allowed;
+    return allowed;
+  }
+
+  @override
+  void event(String name, Map<String, dynamic> properties) => events.add({'name': name, ...properties});
+  @override
+  Future<void> closeAfterOptOut() async {}
+}
+
 class _Harness {
-  _Harness({this.endpoint = false, this.maxQueue = 200, _Store? storage}) : store = storage ?? _Store() {
+  _Harness({this.endpoint = false, this.maxQueue = 200, _Store? storage, AnyappDiagnosticsSdk? diagnostics})
+    : store = storage ?? _Store() {
     container = ProviderContainer(
       overrides: [
         anyappAnalyticsConfigProvider.overrideWithValue(
@@ -56,6 +79,7 @@ class _Harness {
             retryBase: const Duration(minutes: 30),
             maxQueue: maxQueue,
             appVersion: '0.10.2+2026110907',
+            diagnostics: diagnostics,
           ),
         ),
       ],
@@ -83,6 +107,72 @@ Future<void> _until(bool Function() condition) async {
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
+
+  test('old local consent does not enable third-party diagnostics', () async {
+    final store = _Store();
+    final old = _Harness(storage: store);
+    await old.controller.setEnabled(true);
+    old.controller.track(AnyappEvent.appOpen);
+    await old.events();
+    old.dispose();
+    final sdk = _Diagnostics();
+    final h = _Harness(storage: store, diagnostics: sdk);
+    addTearDown(h.dispose);
+    await _until(() => h.state.loaded);
+    expect(h.state.enabled, isFalse);
+    expect(sdk.grants, isEmpty);
+    expect(await h.events(), isEmpty);
+  });
+
+  test('explicit consent starts diagnostics and sends only bounded event fields', () async {
+    final sdk = _Diagnostics();
+    final h = _Harness(diagnostics: sdk);
+    addTearDown(h.dispose);
+    await h.controller.setEnabled(true);
+    expect(sdk.grants, [true]);
+    expect(h.state.diagnosticsReady, isTrue);
+    expect((jsonDecode(h.store.value!) as Map)['diagnosticsConsent'], 1);
+    h.controller.track(AnyappEvent.workOpen, page: AnyappPage.work, elapsed: const Duration(milliseconds: 20));
+    await h.events();
+    expect(sdk.events.single, {'name': 'workOpen', 'page': 'work', 'elapsed_ms': 20});
+    await h.controller.setEnabled(false);
+    h.controller.track(AnyappEvent.creatorStart);
+    await h.events();
+    expect(sdk.events.length, 1);
+  });
+
+  test('failed consent storage never starts the third-party SDK', () async {
+    final sdk = _Diagnostics();
+    final h = _Harness(storage: _Store()..fail = true, diagnostics: sdk);
+    addTearDown(h.dispose);
+    await h.controller.setEnabled(true);
+    expect(sdk.grants, isEmpty);
+    expect(h.state.enabled, isFalse);
+  });
+
+  test('native withdrawal overrides a stale Dart consent record on relaunch', () async {
+    final store = _Store();
+    final first = _Harness(storage: store, diagnostics: _Diagnostics());
+    await first.controller.setEnabled(true);
+    first.dispose();
+    final sdk = _Diagnostics()..allowed = false;
+    final next = _Harness(storage: store, diagnostics: sdk);
+    addTearDown(next.dispose);
+    await _until(() => next.state.loaded);
+    expect(sdk.grants, [false]);
+    expect(next.state.enabled, isFalse);
+    expect((jsonDecode(store.value!) as Map)['enabled'], isFalse);
+  });
+
+  test('SDK startup failure leaves product analytics usable without false readiness', () async {
+    final h = _Harness(diagnostics: _Diagnostics()..fail = true);
+    addTearDown(h.dispose);
+    await h.controller.setEnabled(true);
+    expect(h.state.diagnosticsReady, isFalse);
+    expect(h.state.diagnosticsFailed, isTrue);
+    h.controller.track(AnyappEvent.workOpen);
+    expect((await h.events()).length, 1);
+  });
 
   test('endpoint is independent, HTTPS only, without credentials or upstream fallback', () {
     for (final url in [

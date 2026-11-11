@@ -162,6 +162,28 @@ class MainActivity : FlutterActivity() {
         appChannel = MethodChannel(flutterEngine.dartExecutor.binaryMessenger, "dsh/app")
         appChannel!!.setMethodCallHandler { call, result ->
             when (call.method) {
+                "activateAnalytics" -> {
+                    val prefs = getSharedPreferences("anyapp.diagnostics", Context.MODE_PRIVATE)
+                    val explicit = call.argument<Boolean>("explicitConsent") == true
+                    val granted = if (explicit) prefs.edit().putBoolean("consent.v1", true).commit()
+                        else prefs.getBoolean("consent.v1", false)
+                    if (granted) com.umeng.commonsdk.UMConfigure.submitPolicyGrantResult(applicationContext, true)
+                    result.success(granted)
+                }
+                "closeAfterAnalyticsOptOut" -> {
+                    val saved = getSharedPreferences("anyapp.diagnostics", Context.MODE_PRIVATE)
+                        .edit().putBoolean("consent.v1", false).commit()
+                    if (!saved) result.error("analytics-consent-save-failed", "Could not save choice", null)
+                    else {
+                        com.umeng.commonsdk.UMConfigure.submitPolicyGrantResult(applicationContext, false)
+                        result.success(null)
+                        // The settings dialog explicitly confirms exiting. No relaunch,
+                        // uninstall, data clearing or interference with other packages.
+                        android.os.Handler(mainLooper).postDelayed({
+                            android.os.Process.killProcess(android.os.Process.myPid())
+                        }, 100)
+                    }
+                }
                 "getTimeZoneId" -> result.success(TimeZone.getDefault().id)
                 // A browser sign-in finished (a Custom Tab on top of this task): clearing down
                 // to this activity closes the tab and shows the app again.
