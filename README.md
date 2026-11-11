@@ -6,6 +6,20 @@
 
 基于真实 DeepSeek Harness Creator，可继续修改、导入和分享作品。首次安装自动准备比价雷达 1.25.0 与番茄钟。手机读屏、悬浮动作、提醒等能力由用户按需要开启。
 
+![把想法，装进手机。DSH AnyApp 产品介绍](docs/images/launch/01-anyapp.png)
+
+## 从想法，到日常
+
+**逛到心动，先比一下。** 比价雷达可以把常用动作放在悬浮入口；执行时，通过顶部控件随时暂停或停止。
+
+![比价雷达：展开悬浮动作与 AnyApp 手机操控示意](docs/images/launch/02-phone-use.png)
+
+**一句话，做成一个应用。** 说出需求，再一起完善；从一个番茄钟开始，也可以继续创造适合自己的工具。
+
+![一句话创造番茄钟应用的示例](docs/images/launch/03-idea-to-app.png)
+
+[下载三张产品图原图（ZIP）](https://github.com/jorylai/DSH-AnyApp/releases/download/v0.10.11/DSH-AnyApp-Launch-Images-v3.zip) · [查看图片目录](docs/images/launch/README.md)
+
 本项目是社区衍生项目，非 DeepSeek 官方产品。上游代码来源：ccch1mneyyy/dsh-go；遵循 AGPL-3.0 及各第三方组件许可，见 LICENSE、THIRD_PARTY_NOTICES.md、ASSETS.md。
 
 ## 致谢

@@ -4,6 +4,20 @@ Create personal Android apps with natural language and real DeepSeek Harness Cre
 
 [Download 0.10.11 APK](https://github.com/jorylai/DSH-AnyApp/releases/download/v0.10.11/DSH-AnyApp-0.10.11-arm64.apk) · [Release notes and downloads](https://github.com/jorylai/DSH-AnyApp/releases/latest) · [中文](README.md)
 
+![DSH AnyApp: turn ideas into personal Android apps](docs/images/launch/01-anyapp.png)
+
+## From an idea to an everyday tool
+
+**Compare while you browse.** Price Radar puts app actions in a floating entry point. During phone operation, the top control lets you pause or stop.
+
+![Price Radar: expanded floating actions and the AnyApp phone-operation control](docs/images/launch/02-phone-use.png)
+
+**Describe the app you want, then refine it together.** Start with a Pomodoro timer, or create another personal tool.
+
+![A Pomodoro app creation example](docs/images/launch/03-idea-to-app.png)
+
+[Download all three original product images (ZIP)](https://github.com/jorylai/DSH-AnyApp/releases/download/v0.10.11/DSH-AnyApp-Launch-Images-v3.zip) · [Image directory](docs/images/launch/README.md)
+
 ## Thanks
 
 Special thanks to [DSH Go](https://github.com/ccch1mneyyy/dsh-go), its author and contributors. Their product showed us a practical path for running DeepSeek Harness on Android and connecting accessibility, overlays and other Android capabilities. Their exploration and open-source work were an important starting point for DSH AnyApp. This is an independently maintained community derivative, not an official DeepSeek or DSH Go distribution or endorsement.
